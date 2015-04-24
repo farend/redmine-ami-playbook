@@ -1,0 +1,8 @@
+mysql_root_password: root_password
+redmine_db_user: user_redmine
+redmine_db_pass: redmine_password
+ruby_major: 2.2
+ruby_version: '{{ ruby_major }}.2'
+redmine_version: 3.0.1
+redmine_parent: /var/lib/
+redmine_dir: '{{ redmine_parent }}redmine/'

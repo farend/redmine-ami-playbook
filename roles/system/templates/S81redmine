@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export PATH=/usr/local/bin:$PATH
+cd /var/lib/redmine && bundle exec rake generate_secret_token

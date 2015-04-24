@@ -1,0 +1,4 @@
+Header always unset "X-Powered-By"
+Header always unset "X-Rack-Cache"
+Header always unset "X-Content-Digest"
+Header always unset "X-Runtime"
