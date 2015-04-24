@@ -1,0 +1,60 @@
+- name: Create swap area
+  sudo: yes
+  command: dd if=/dev/zero of=/swap bs=1M count=1024
+
+- name: Make swap memory
+  sudo: yes
+  command: mkswap /swap
+
+- name: Turn on swap memory
+  sudo: yes
+  command: swapon /swap
+
+- name: Install Development Tools
+  sudo: yes
+  yum: name='@Development Tools'
+
+- name: Install required　packages
+  sudo: yes
+  yum: pkg={{ item }} state=present
+  with_items:
+    - openssl-devel
+    - zlib-devel
+    - readline-devel
+    - curl-devel
+    - libyaml-devel
+    - libffi-devel
+    - httpd
+    - httpd-devel
+    - mysql55-server
+    - mysql55-devel
+    - postfix
+    - ImageMagick
+    - ImageMagick-devel
+    - ipa-gothic-fonts
+    - python-devel
+    - python-setuptools
+
+- name: Setup pip tool
+  sudo: yes
+  command: easy_install pip
+
+- name: Install mysql-python
+  pip: name=mysql-python
+  sudo: yes
+
+- name: Stop sendmail service
+  sudo: yes
+  service: name=sendmail state=stopped
+
+- name: Set up using Postfix
+  sudo: yes
+  alternatives: name=mta path=/usr/sbin/sendmail.postfix link=/usr/sbin/sendmail
+
+- name: Start Postfix service
+  sudo: yes
+  service: name=postfix state=started enabled=yes
+
+- name: Create Security Token script
+  sudo: yes
+  template: src=S81redmine dest=/etc/rc3.d/S81redmine mode=0755

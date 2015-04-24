@@ -1,0 +1,74 @@
+- name: Download Redmine source archive
+  get_url:
+    url=http://www.redmine.org/releases/redmine-{{ redmine_version }}.tar.gz
+    dest=/tmp/redmine-{{ redmine_version }}.tar.gz
+
+- name: Extract and place Redmine
+  sudo: yes
+  unarchive:
+    src=/tmp/redmine-{{ redmine_version }}.tar.gz
+    dest={{ redmine_parent }} copy=no
+
+- name: Change directory name
+  sudo: yes
+  command: mv {{ redmine_parent }}redmine-{{ redmine_version }} {{ redmine_dir }}
+
+- name: Set up database.yml file
+  sudo: yes
+  template:
+    src=database.yml
+    dest={{ redmine_dir }}config/database.yml
+
+- name: Set up configuration.yml file
+  sudo: yes
+  template:
+    src=configuration.yml
+    dest={{ redmine_dir }}config/configuration.yml
+
+- name: Install gems
+  sudo: yes
+  command:
+    bundle install --without development test --path vendor/bundle
+    chdir={{ redmine_dir }}
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+
+- name: Generate secret-token file
+  sudo: yes
+  command:
+    bundle exec rake generate_secret_token
+    chdir={{ redmine_dir }}
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+
+- name: Migrate database
+  sudo: yes
+  shell:
+    RAILS_ENV=production bundle exec rake db:migrate
+    chdir={{ redmine_dir }}
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+
+- name: Load default data
+  sudo: yes
+  shell:
+    RAILS_ENV=production REDMINE_LANG=ja bundle exec rake redmine:load_default_data
+    chdir={{ redmine_dir }}
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+
+- name: Download farend_basic theme
+  sudo: yes
+  git:
+    repo=git://github.com/farend/redmine_theme_farend_basic.git
+    dest={{ redmine_dir }}public/themes/farend_basic
+    accept_hostkey=yes
+
+
+- name: Download farend_fancy theme
+  sudo: yes
+  git:
+    repo=git://github.com/farend/redmine_theme_farend_fancy.git
+    dest={{ redmine_dir }}public/themes/farend_fancy
+    accept_hostkey=yes
+

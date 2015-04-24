@@ -1,0 +1,32 @@
+- name: Install pasenger web server
+  sudo: yes
+  command: gem install passenger --no-rdoc --no-ri
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+
+- name: Build up pasenger web server
+  sudo: yes
+  command: passenger-install-apache2-module -a
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+
+- name: Create redmine.conf from output of building passenger
+  sudo: yes
+  shell:
+    export PATH=$PATH:/usr/local/bin && passenger-install-apache2-module --snippet > /etc/httpd/conf.d/redmine.conf
+
+- name: Change Apache's document root
+  sudo: yes
+  command: sed -i -e "s!DocumentRoot \"/var/www/html\"!DocumentRoot \"/var/lib/redmine/public\"!g" /etc/httpd/conf/httpd.conf
+
+- name: Change Server Tokens mode
+  sudo: yes
+  command: sed -i -e "s!ServerTokens OS!ServerTokens Prod!g" /etc/httpd/conf/httpd.conf
+
+- name: Create additional conf
+  sudo: yes
+  template: src=add_redmine.conf.txt dest=/tmp/add_redmine.conf
+
+- name: Add other config
+  sudo: yes
+  shell: cat /tmp/add_redmine.conf >> /etc/httpd/conf.d/redmine.conf

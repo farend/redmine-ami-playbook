@@ -1,0 +1,5 @@
+- name: Create script for erasing private files and logs
+  sudo: yes
+  template:
+    src=delete.sh
+    dest=/root/delete.sh

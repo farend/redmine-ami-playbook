@@ -1,0 +1,10 @@
+- hosts: redmine
+  remote_user: ec2-user
+  roles:
+     - system
+     - ruby
+     - mysql
+     - redmine
+     - passenger
+     - apache
+     - ami_work

@@ -1,0 +1,22 @@
+- name: Download Ruby source archive
+  get_url: url=http://cache.ruby-lang.org/pub/ruby/{{ ruby_major }}/ruby-{{ ruby_version }}.tar.gz dest=/tmp/ruby-{{ ruby_version }}.tar.gz
+
+- name: Extract Ruby source
+  unarchive: src=/tmp/ruby-{{ ruby_version }}.tar.gz dest=/tmp copy=no
+
+- name: Build Ruby
+  shell:
+    ./configure --disable-install-doc &&  make
+    chdir=/tmp/ruby-{{ ruby_version }}
+
+- name: Setup Ruby command
+  sudo: yes
+  command:
+    make install
+    chdir=/tmp/ruby-{{ ruby_version }}
+
+- name: Install bundler tool
+  sudo: yes
+  command: gem install bundler --no-rdoc --no-ri
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"

@@ -1,0 +1,8 @@
+- name: Change owner Redmine directory
+  sudo: yes
+  command:
+    chown -R apache:apache {{ redmine_dir }}
+
+- name: Start httpd and run it automatically at boot time
+  sudo: yes
+  service: name=httpd state=started enabled=yes
