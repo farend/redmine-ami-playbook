@@ -13,7 +13,9 @@
 - name: Create redmine.conf from output of building passenger
   sudo: yes
   shell:
-    export PATH=$PATH:/usr/local/bin && passenger-install-apache2-module --snippet > /etc/httpd/conf.d/redmine.conf
+    passenger-install-apache2-module --snippet > /etc/httpd/conf.d/redmine.conf
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
 
 - name: Change Apache's document root
   sudo: yes
