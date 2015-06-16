@@ -5,6 +5,7 @@ service postfix stop
 service mysqld stop
 service rsyslog stop
 cp /dev/null /root/.ssh/authorized_keys
+cp /dev/null /root/.ssh/known_hosts
 cp /dev/null /root/.bash_history
 cp /dev/null /root/.mysql_history
 cp /dev/null /home/ec2-user/.ssh/authorized_keys
