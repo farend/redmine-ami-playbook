@@ -34,6 +34,7 @@
     - ipa-gothic-fonts
     - python-devel
     - python-setuptools
+    - subversion
 
 - name: Setup pip tool
   sudo: yes

@@ -1,17 +1,8 @@
 - name: Download Redmine source archive
-  get_url:
-    url=http://www.redmine.org/releases/redmine-{{ redmine_version }}.tar.gz
-    dest=/tmp/redmine-{{ redmine_version }}.tar.gz
-
-- name: Extract and place Redmine
   sudo: yes
-  unarchive:
-    src=/tmp/redmine-{{ redmine_version }}.tar.gz
-    dest={{ redmine_parent }} copy=no
-
-- name: Change directory name
-  sudo: yes
-  command: mv {{ redmine_parent }}redmine-{{ redmine_version }} {{ redmine_dir }}
+  subversion:
+    repo=http://svn.redmine.org/redmine/branches/3.0-stable
+    dest={{ redmine_dir }}
 
 - name: Set up database.yml file
   sudo: yes

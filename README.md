@@ -1,4 +1,4 @@
-# Redmine AMIの作り方
+# Redmine Ver.3.0 AMIの作り方
 
 ## インスタンス作成
 
@@ -28,8 +28,6 @@ AWSコンソール等にてAmazon Linuxのmicroインスタンスを作成する
 * `redmine_db_pass` に **db_redmineデータベースのuser_redmineアカウントのパスワード** を設定する。
 * `ruby_major` に **rubyのメジャーバージョン（小数点1位まで）** を設定する。
 * `ruby_version` に **rubyのバージョンのruby_major以外** を設定する。
-* `redmine_version` に **Redmineのバージョン** を設定する。
-* `redmine_parent` に **Redmineを配置するディレクトリ** を設定する。
 
 ## インストール実行
 
