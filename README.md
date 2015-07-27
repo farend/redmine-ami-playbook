@@ -1,4 +1,4 @@
-# Redmine Ver.3.0 AMIの作り方
+# Redmine Ver.3.1 AMIの作り方
 
 ## インスタンス作成
 
