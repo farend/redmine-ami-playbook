@@ -1,4 +1,6 @@
-# Redmine Ver.3.1 AMIの作り方
+# Redmine Ver.3.2 AMIの作り方
+
+**AWS上で公開している Farend-Redmine AMI の構成情報を明らかにするために公開しております。**
 
 ## インスタンス作成
 
