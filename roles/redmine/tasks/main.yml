@@ -61,3 +61,12 @@
     repo=git://github.com/farend/redmine_theme_farend_fancy.git
     dest={{ redmine_dir }}public/themes/farend_fancy
     accept_hostkey=yes
+
+- name: Set on farend_basic theme
+  sudo: yes
+  command:
+    bundle exec rails r 'Setting["ui_theme"]="farend_basic"'
+    chdir={{ redmine_dir }}
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+    RAILS_ENV: production
