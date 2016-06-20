@@ -35,10 +35,6 @@ AWSコンソール等にてAmazon Linuxのmicroインスタンスを作成する
 
 **`ansible-playbook -i hosts main.yml`** で実行
 
-## Redmine設定
-
-*<u>Ansibleの実行が終わったら</u>*、Redmineにadminでログインし、デフォルトのテーマを **farend_basic** に変更。
-
 ## 操作ログ等の削除
 
 インスタンスにログインし、下記を実行。
