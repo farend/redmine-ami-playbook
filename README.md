@@ -1,4 +1,4 @@
-# Redmine Ver.3.2 AMIの作り方
+# Redmine Ver.3.3 AMIの作り方
 
 **AWS上で公開している Farend-Redmine AMI の構成情報を明らかにするために公開しております。**
 
@@ -6,7 +6,7 @@
 
 AWSコンソール等にてAmazon Linuxのmicroインスタンスを作成する。
 
-## OSを最新状態にする
+## OSを最新状態にする（この内容のみインスタンスで実行）
 
 * 一度インスタンスにログインし、 `sudo yum -y update` を実施する。
 * 再起動する。

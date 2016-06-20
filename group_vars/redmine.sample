@@ -1,6 +1,6 @@
 mysql_root_password: root_password
 redmine_db_user: user_redmine
 redmine_db_pass: redmine_password
-ruby_major: 2.2
-ruby_version: '{{ ruby_major }}.3'
+ruby_major: 2.3
+ruby_version: '{{ ruby_major }}.1'
 redmine_dir: '/var/lib/redmine/'
