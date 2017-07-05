@@ -26,8 +26,8 @@
     - libffi-devel
     - httpd
     - httpd-devel
-    - mysql55-server
-    - mysql55-devel
+    - postgresql95-devel
+    - postgresql95-server
     - postfix
     - ImageMagick
     - ImageMagick-devel
@@ -35,14 +35,6 @@
     - python-devel
     - python-setuptools
     - subversion
-
-- name: Setup pip tool
-  sudo: yes
-  command: easy_install pip
-
-- name: Install mysql-python
-  pip: name=mysql-python
-  sudo: yes
 
 - name: Stop sendmail service
   sudo: yes

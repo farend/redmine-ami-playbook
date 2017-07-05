@@ -1,5 +1,5 @@
 production:
-  adapter: mysql2
+  adapter: postgresql
   database: db_redmine
   host: localhost
   username: {{ redmine_db_user }}

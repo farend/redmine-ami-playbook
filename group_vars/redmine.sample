@@ -1,4 +1,4 @@
-mysql_root_password: root_password
+pgsql_root_password: root_password
 redmine_db_user: user_redmine
 redmine_db_pass: redmine_password
 ruby_major: 2.3

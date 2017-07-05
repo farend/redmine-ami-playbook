@@ -1,7 +1,7 @@
 - name: Download Redmine source archive
   sudo: yes
   subversion:
-    repo=http://svn.redmine.org/redmine/branches/3.3-stable
+    repo=http://svn.redmine.org/redmine/branches/3.4-stable
     dest={{ redmine_dir }}
 
 - name: Set up database.yml file

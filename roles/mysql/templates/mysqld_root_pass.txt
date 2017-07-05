@@ -1,2 +1,0 @@
-ID: root
-PW: {{ mysql_root_password }}

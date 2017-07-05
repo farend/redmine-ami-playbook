@@ -2,15 +2,13 @@
 
 service httpd stop
 service postfix stop
-service mysqld stop
+service postgresql95 stop
 service rsyslog stop
 cp /dev/null /root/.ssh/authorized_keys
 cp /dev/null /root/.ssh/known_hosts
 cp /dev/null /root/.bash_history
-cp /dev/null /root/.mysql_history
 cp /dev/null /home/ec2-user/.ssh/authorized_keys
 cp /dev/null /home/ec2-user/.bash_history
-cp /dev/null /home/ec2-user/.mysql_history
 rm -rf /home/ec2-user/.ansible
 cp /dev/null /var/log/boot.log
 cp /dev/null /var/log/btmp
@@ -29,7 +27,7 @@ cp /dev/null /var/log/audit/audit.log
 cp /dev/null /var/log/cloud-init.log
 cp /dev/null /var/log/cloud-init-output.log
 cp /dev/null /var/log/dracut.log
-cp /dev/null /var/log/mysqld.log
+rm -f /var/lib/pgsql95/data/pg_log/*.log
 cp /dev/null /var/log/mail/statistics
 cp /dev/null /var/log/httpd/access_log
 cp /dev/null /var/log/httpd/error_log

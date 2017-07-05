@@ -1,4 +1,4 @@
-# Redmine Ver.3.3 AMIの作り方
+# Redmine Ver.3.4 AMIの作り方
 
 **AWS上で公開している Farend-Redmine AMI の構成情報を明らかにするために公開しております。**
 
@@ -26,7 +26,7 @@ AWSコンソール等にてAmazon Linuxのmicroインスタンスを作成する
 
 ### redmine
 
-* `mysql_root_password` に **MySQLのrootのパスワード** を設定する。
+* `pgsql_root_password` に **MySQLのrootのパスワード** を設定する。
 * `redmine_db_pass` に **db_redmineデータベースのuser_redmineアカウントのパスワード** を設定する。
 * `ruby_major` に **rubyのメジャーバージョン（小数点1位まで）** を設定する。
 * `ruby_version` に **rubyのバージョンのruby_major以外** を設定する。
