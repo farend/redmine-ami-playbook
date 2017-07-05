@@ -26,7 +26,6 @@ AWSコンソール等にてAmazon Linuxのmicroインスタンスを作成する
 
 ### redmine
 
-* `pgsql_root_password` に **PostgreSQLのrootのパスワード** を設定する。
 * `redmine_db_pass` に **db_redmineデータベースのuser_redmineアカウントのパスワード** を設定する。
 * `ruby_major` に **rubyのメジャーバージョン（小数点1位まで）** を設定する。
 * `ruby_version` に **rubyのバージョンのruby_major以外** を設定する。
